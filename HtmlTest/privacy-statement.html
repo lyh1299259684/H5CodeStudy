@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>App隐私声明</title>
+		<script>
+			const appName = '《前程办事处智慧社区App》'
+			//禁止复制
+			document.oncontextmenu = new Function("event.returnValue=false");
+			document.onselectstart = new Function("event.returnValue=false");
+			//页面加载完成后，统一设置app名字
+			window.onload = function () {
+				let spanArray = document.getElementsByTagName("span")
+				for (var i = 0; i < spanArray.length; i++) {
+					spanArray[i].innerText = appName
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<h1>APP应用 隐私声明</h1>
+			<hr/>
+			<p><span></span>注重您个人隐私的保护。有时候我们需要某些信息才能为您提供您请求的服务，本隐私权声明解释了这些情况下的数据收集和使用情况。本隐私权声明适用于<span></span>APP应用产品的所有相关服务。</p>
+			<p><strong>您个人信息的搜集</strong></p>
+			<p>当我们需要能识别您身份的信息（个人信息）或者可以与您联系的信息时，我们会征求您的同意。</p>
+			<p><strong>控制您的个人信息</strong></p>
+			<p><span></span>会在法律要求或符合<span></span>的相关服务条款、软件许可使用协议约定的情况下透露您的个人信息，或者有充分理由相信必须这样做才能满足法律的明文规定，或者符合<span></span>本应用适用的法律程序；符合<span></span>相关服务条款、软件许可使用协议的约定；保护<span></span>的权利或财产，以及在紧急情况下保护<span></span>员工、<span></span>产品或服务的用户或大众的个人安全。</p>
+			<p><span></span>不会未经允许将这些信息与第三方共享，本声明已经列出的情况除外。</p>
+			<p><strong>您个人信息的安全</strong></p>
+			<p>严格保护您的个人信息的安全。我们使用各种安全技术和程序来保护您的个人信息不被未经授权的访问、使用或泄漏。如果您对我们的隐私保护有任何置疑，请email至 chkj2004@163.com</p>
+			<p><strong>关于免责</strong></p>
+			<p>就下列相关事宜的发生，<span></span>不承担任何法律责任：</p>
+			<ol>
+				<li><span></span>根据法律规定或相关政府的要求提供您的个人信息</li>
+				<li>非因<span></span>原因导致的个人信息的泄漏</li>
+				<li>任何第三方根据<span></span>各服务条款及声明中所列明的情况使用您的个人信息由此所产生的纠纷</li>
+				<li>任何由于黑客攻击、电脑病毒侵入或政府管制而造成的暂时性服务停止</li>
+				<li>因不可抗力导致的任何后果</li>
+				<li><span></span>在各服务条款及声明中列明的免责情形</li>
+			</ol>
+			<p><strong>隐私声明的修订：</strong></p>
+			<p>根据需要，将随时修改本隐私声明。我们建议用户定期上网查看最新的隐私政策于使用条款规定。未来任何条款如有更新，我们将不主动提醒用户，亦不会回溯应用在之前所发生的情形，同时不会改变我们对于之前所收集的资料之处理方式。</p>
+			<p><strong>联系方式：chkj2004@163.com</strong></p>
+		</div>
+	</body>
+</html>

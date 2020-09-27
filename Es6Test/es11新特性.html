@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>es11新特性</title>
+		
+		<script type="text/javascript">
+			/**
+			 * es11 之后可以声明私有属性，使用#声明（如：#age）
+			 */
+			class Person {
+				//声明公共属性
+				name
+				age
+				sex
+				height
+				//声明私有属性
+				#action
+				
+				constructor(name, age, sex, height, action) {
+				    this.name = name
+					this.age = age
+					this.sex = sex
+					this.height = height
+					//私有属性的赋值方式
+					this.#action = action
+				}
+				
+				//获取私有属性值，只能通过函数获取，无法直接调用
+				getAction() {
+					return this.#action
+				}
+			}
+			
+			let boy = new Person('张三', 18, '男', 180, '游泳，攀岩，打篮球')
+			//输出结果：张三
+			console.log(boy.name)
+			//报错：私有属性不允许调用
+			console.log(boy.#action)
+			//输出结果：游泳，攀岩，打篮球
+			console.log(boy.getAction())
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

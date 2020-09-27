@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>es10新特性</title>
+		
+		<script>
+			let m = new Map()
+			m.set('name', '张三')
+			m.set('age', 18)
+			
+			/**
+			 * 将map转换为一个对象，它跟Object.entries()是相反的
+			 * 		Object.entries是将一个对象转换为一个二维数组，然后可以用二维数组创建Map对象
+			 */
+			console.log(Object.fromEntries(m))
+			
+			
+			/**
+			 * es10中增加了 trimStart 和 trimEnd两个方法，用来清除字符串左侧空白 和 字符串右侧空白的
+			 */
+			let str = '      test     '
+			console.log(str)
+			//清除前后空格
+			console.log(str.trim())
+			//清除左侧空白
+			console.log(str.trimStart())
+			//清除右侧空白
+			console.log(str.trimEnd())
+			
+			
+			/**
+			 * es10中提供了数组奖级的方法，可以通过Array.flat()来将数组奖级
+			 * 		参数：深度，默认值为1，如果直接Array.flat()，说明将二维数组转为1维数组，
+			 * 			  如果要将3维数组转换为二维数组可以使用Array.flat(2)
+			 */
+			//声明一个二维数组
+			let arr = [1, 2, 3, 4, [5, 6]]
+			//转为一维数组
+			// console.log(arr.flat())
+			
+			let arr2 = [1, 2, 3, 4, [5, 6, [7, 8, 9]]]
+			//转为二维数组
+			console.log(arr.flat())
+			//转为一维数组
+			console.log(arr.flat(2))
+			
+			
+			/**
+			 * es10 中提供了flatMap，可以把map转换为一维数组
+			 */
+			let mArray = [1, 2, 3, 4, 5]
+			//需求：将数组中的每个元素都*10
+			let mResult = mArray.flatMap(item => [item * 10])
+			console.log(mResult)
+			
+			
+			/**
+			 * es10中提供了获取Symbol字符串的属性，可以通过description属性获取描述值
+			 */
+			let sym = Symbol('测试一下')
+			//输出结果为：测试一下
+			console.log(sym.description)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

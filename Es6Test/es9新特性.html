@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>es9新特性</title>
+		<script>
+			/**
+			 * 在es6中rest参数只对数组支持，在es9中引入了对象的支持
+			 * 
+			 * 使用解构赋值的方式
+			 */
+			function login({username, password, ...location}) {
+				console.log(username)
+				console.log(password)
+				//输出是一个对象
+				console.log(location)
+			}
+			//调用方法
+			login({
+				username: 'root',
+				password: 'root',
+				address: '天安门广场东侧50米',
+				lat: '33.02',
+				log: '104.21'
+			})
+			
+			
+			/**
+			 * 使用扩展运算符来合并对象
+			 */
+			const oA = {
+				name: '张三',
+				age: 18
+			}
+			const oB = {
+				name: '李四',
+				action: '打豆豆'
+			}
+			const oC = {
+				sex: '男',
+				height: 180
+			}
+			//如果出现重复的，后面的将把前面的覆盖，跟Object.assign()一样的道理
+			const person = {...oA, ...oB, ...oC}
+			console.log(person)
+			
+			
+			
+			/**
+			 * 正则扩展----命名分组
+			 */
+			//之前的做法
+			const str = "<a href='https://www.baidu.com'>百度一下，你就知道</a>"
+			const reg = /<a href='(.*?)'>(.*?)<\/a>/
+			console.log(reg.exec(str))
+			
+			//es9命名分组做法
+			const regNew = /<a href='(?<url>.*?)'>(?<text>.*?)<\/a>/
+			console.log(regNew.exec(str))
+			
+			
+			/**
+			 * 正则扩展---反向断言
+			 */
+			//需求：给出一段字符串，需要从字符串中提取到动态字符串，提示：左边是字符‘反’，右边是字符‘正’
+			let testStr = 'js51212142大号fads反54212正发大水发'
+			//正向断言例子
+			let zReg = /\d+(?=正)/
+			console.log(zReg.exec(testStr))
+			
+			//反向断言例子
+			let fReg = /(?<=反)\d+/
+			console.log(fReg.exec(testStr))
+			
+			
+			/**
+			 * 正则扩展---dotAll模式
+			 */
+			let htmlStr = `
+				<ul>
+					<li>
+						<a>西游记</a>
+						<p>上映时间：2020-01-20 15:30:00</p>
+					</li>
+					<li>
+						<a>红楼梦</a>
+						<p>上映时间：2020-05-20 18:50:00</p>
+					</li>
+				</ul>
+			`
+			//之前的做法
+			let hReg = /<li>\s+<a>(?<title>.*?)<\/a>\s+<p>(?<openTime>.*?)<\/p>\s+<\/li>/
+			console.log(hReg.exec(htmlStr))
+			
+			//dotAll模式，在正则后面加一个s表示单个，gs表示多个
+			let hRegNew = /<li>.*?<a>(?<title>.*?)<\/a>.*?<p>(?<openTime>.*?)<\/p>.*?<\/li>/gs
+			//循环遍历
+			let result, data = []
+			while(result = hRegNew.exec(htmlStr)) {
+				data.push({
+					title: result.groups.title,
+					openTime: result.groups.openTime
+				})
+			}
+			console.log(data)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

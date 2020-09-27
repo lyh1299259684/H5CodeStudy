@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>打包</title>
+		
+		<!-- 原因是有可能有些浏览器不支持模块化，所以需要将es6打包转换es5来完成浏览器兼容问题 -->
+		<!-- 在项目中一般都是使用webpack，这里使用browserify -->
+		
+		<!-- 
+			步骤: 首先完成 babel-cli  babel-preset-env  browserify 工具的安装
+				  1.执行 npm init --yes 完成初始化
+				  2.执行 npm i babel-cli babel-preset-env browserify -D 完成开发版本安装
+				  3.执行 npx babel js -d dist/js --presets=babel-preset-env 完成转换，
+					js为源代码目录，dist/js为转换后的代码目录
+				  4.执行 npx browserify dist/js/module.js -o dist/moduleRelease.js 完成打包，
+					dist/js/module.js为需要打包的js文件，moduleRelease.js为打包后可以使用的文件
+					
+			注意：修改了代码需要重新执行第三步和第四步，否则不会生效
+		 -->
+		 <script type="module" src="dist/moduleRelease.js"></script>
+	</head>
+	<body>
+	</body>
+</html>

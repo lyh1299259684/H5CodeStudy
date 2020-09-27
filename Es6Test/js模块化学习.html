@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>模块化学习</title>
+		
+		<!-- 普通使用 -->
+		<script type="module">
+			/**
+			 * 普通方式引入
+			 */
+			//引入模块m1
+			import * as m1 from './js/module/m1.js'
+			console.log(m1.hello)
+			
+			//引入模块m2
+			import * as m2 from './js/module/m2.js'
+			m2.module1()
+			
+			//引入模块m3
+			import * as m3 from './js/module/m3.js'
+			m3.default.module1()
+			
+			
+			/**
+			 * 使用解构赋值的形式引入
+			 */
+			import {hello, module1} from './js/module/m1.js'
+			console.log(hello)
+			module1()
+			//如果遇到重名的情况
+			import {module1 as m2Module1, module2} from './js/module/m2.js';
+			m2Module1()
+			module2()
+			
+			//解构赋值形式引入默认暴露
+			import {default as dM3} from './js/module/m3.js'
+			dM3.module2()
+			
+			
+			/**
+			 * 简便形式，只能用于默认暴露
+			 */
+			import m3a from './js/module/m3.js'
+			m3a.module1()
+		</script>
+	
+		<!-- 引入文件方式使用 -->
+		<script type="module" src="./js/module.js"></script>
+	</head>
+	<body>
+	</body>
+</html>

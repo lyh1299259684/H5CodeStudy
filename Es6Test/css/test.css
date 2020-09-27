@@ -1,0 +1,17 @@
+.item {
+	width: 108px;
+	height: 54px;
+	margin-right: 12px;
+	display: inline-block;
+	border: 1px solid darkturquoise;
+}
+
+#ad {
+	margin-top: 16px;
+	width: 154px;
+	height: 72px;
+	background-color: green;
+	color: white;
+	text-align: center;
+	line-height: 72px;
+}

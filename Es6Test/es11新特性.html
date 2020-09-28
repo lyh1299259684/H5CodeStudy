@@ -8,37 +8,99 @@
 			/**
 			 * es11 之后可以声明私有属性，使用#声明（如：#age）
 			 */
-			class Person {
-				//声明公共属性
-				name
-				age
-				sex
-				height
-				//声明私有属性
-				#action
+			// class Person {
+			// 	//声明公共属性
+			// 	name
+			// 	age
+			// 	sex
+			// 	height
+			// 	//声明私有属性
+			// 	#action
 				
-				constructor(name, age, sex, height, action) {
-				    this.name = name
-					this.age = age
-					this.sex = sex
-					this.height = height
-					//私有属性的赋值方式
-					this.#action = action
-				}
+			// 	constructor(name, age, sex, height, action) {
+			// 	    this.name = name
+			// 		this.age = age
+			// 		this.sex = sex
+			// 		this.height = height
+			// 		//私有属性的赋值方式
+			// 		this.#action = action
+			// 	}
 				
-				//获取私有属性值，只能通过函数获取，无法直接调用
-				getAction() {
-					return this.#action
-				}
-			}
+			// 	//获取私有属性值，只能通过函数获取，无法直接调用
+			// 	getAction() {
+			// 		return this.#action
+			// 	}
+			// }
 			
-			let boy = new Person('张三', 18, '男', 180, '游泳，攀岩，打篮球')
-			//输出结果：张三
-			console.log(boy.name)
-			//报错：私有属性不允许调用
-			console.log(boy.#action)
-			//输出结果：游泳，攀岩，打篮球
-			console.log(boy.getAction())
+			// let boy = new Person('张三', 18, '男', 180, '游泳，攀岩，打篮球')
+			// //输出结果：张三
+			// console.log(boy.name)
+			// //报错：私有属性不允许调用
+			// console.log(boy.#action)
+			// //输出结果：游泳，攀岩，打篮球
+			// console.log(boy.getAction())
+			
+			
+			// /**
+			//  * es11 中引入了 Promise.allSettled()
+			//  * 		Promise.allSettled() ： 他的返回值一定是一个成功的Promise，他的返回值是一个对象数组
+			//  * 		其中对象里面有两个属性，分别为：status、 value 和 reason，status有两个状态，分别是：
+			//  * 		fulfilled 和 rejected，其中fulfilled表示成功，当status状态为fulfilled时，value一定
+			//  * 		有值，就是成功的返回结果。当status状态为rejected时，reason一定有值，就是失败的原因。
+			//  * 
+			//  * Promise.allSettled() 适用于不关注结果是否成功的任务
+			//  * Promise.all() 适用于关注最终结果，需要所有任务都成功的情况
+			//  */
+			// const p1 = new Promise((resolve, reject) => {
+			// 	resolve('success')
+			// })
+			// const p2 = new Promise((resolve, reject) => {
+			// 	reject('fail')
+			// })
+			
+			// //Promise.all(): 只有所有结果都成功最终结果才算成功，哪怕有一个失败就是最终结果就是失败的
+			// Promise.all([p1, p2]).then(result => {
+			// 	console.log(result)
+			// }, reason => {
+			// 	console.log(reason)
+			// })
+			
+			// //Promise.allSettled(): 无论是否成功失败，最终结果都是成功
+			// Promise.allSettled([p1, p2]).then(result => {
+			// 	console.log(result)
+			// })
+			
+			
+			/**
+			 * es11 中引入了 String.prototype.matchAll函数，可以批量匹配特定正则
+			 */
+			let htmlStr = `
+				<ul>
+					<li>
+						<a>西游记</a>
+						<p>上映时间：2020-01-20 15:30:00</p>
+					</li>
+					<li>
+						<a>红楼梦</a>
+						<p>上映时间：2020-05-20 18:50:00</p>
+					</li>
+				</ul>
+			`
+			//批量提取，所以要加sg，如果是单个提取只需加s就行
+			const reg = /<li>.*?<a>(?<title>.*?)<\/a>.*?<p>(?<openTime>.*?)<\/p>.*?<\/li>/s
+			
+			//获取第一个匹配结果
+			// let result = reg.exec(htmlStr)
+			
+			//es11  批量匹配多个，返回的是一个iterator数组
+			let result = htmlStr.matchAll(reg)
+			//使用for...of获取结果
+			for (let v of result) {
+				console.log(v)
+			}
+			//使用扩展运算符获取结果，返回的是一个二维数组
+			result = [...result]
+			console.log(result)
 		</script>
 	</head>
 	<body>

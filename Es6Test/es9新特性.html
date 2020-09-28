@@ -54,7 +54,7 @@
 			const reg = /<a href='(.*?)'>(.*?)<\/a>/
 			console.log(reg.exec(str))
 			
-			//es9命名分组做法
+			//es9命名分组做法，语法?<xxx>，xxx为分组名字
 			const regNew = /<a href='(?<url>.*?)'>(?<text>.*?)<\/a>/
 			console.log(regNew.exec(str))
 			
